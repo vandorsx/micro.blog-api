@@ -1,0 +1,68 @@
+{
+   "title": "[TITLE]",
+   "author": {
+      "name": "[FULL_NAME]",
+      "avatar": "https://micro.blog/[USERNAME]/avatar.jpg",
+      "username": "[USERNAME]",
+      "activitypub": {
+         "username": "[ACTIVITYPUB_USERNAME]",
+         "url": "[ACTIVITYPUB_ACTOR]"
+      }
+   },
+   "mediaTypes": {
+      "application/json": {
+         "suffixes": ["json"]
+      }
+   },
+   "outputFormats": {
+      "MicroblogJSON": {
+         "mediaType": "application/json",
+         "path": "microblog",
+         "baseName": "feed",
+         "isPlainText": true,
+         "notAlternative": true
+      },
+      "apiALlJSON": {
+         "mediaType": "application/json",
+         "path": "api",
+         "baseName": "all",
+         "isPlainText": true,
+         "notAlternative": true
+      },
+      "apiRecentJSON": {
+         "mediaType": "application/json",
+         "path": "api",
+         "baseName": "recent",
+         "isPlainText": true,
+         "notAlternative": true
+      }
+   },
+   "outputs": {
+      "home": ["HTML", "MicroblogJSON", "apiAllJSON", "apiRecentJSON"],
+      "page": ["HTML"]
+   },
+   "taxonomies": {
+      "category": "categories"
+   },
+   "rssLimit": 9999999,
+   "uglyURLs": false,
+   "markup": {
+      "goldmark": {
+         "renderer": {
+            "unsafe": true
+         }
+      }
+   },
+   "enableRobotsTXT": true,
+   "languageCode": "en",
+   "paginate": 25,
+   "params": {
+      "description": "",
+      "paginate_home": false,
+      "paginate_categories": false,
+      "paginate_replies": false,
+      "theme_seconds": "0",
+      "include_conversation": true,
+      "has_podcasts": false
+   }
+}
