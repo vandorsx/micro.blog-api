@@ -16,10 +16,7 @@
    },
    "outputFormats": {
       "JSON": {
-         "mediaType": "application/json",
-         "baseName": "feed",
-         "isPlainText": true,
-         "notAlternative": true
+         "baseName": "feed"
       },
       "apiALlJSON": {
          "mediaType": "application/json",

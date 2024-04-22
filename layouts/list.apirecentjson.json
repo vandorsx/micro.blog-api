@@ -2,7 +2,7 @@
     "version": "https://jsonfeed.org/version/1.1",
     "title": "Jade's microblog (recent posts)",
     "icon": "{{- .Site.BaseURL -}}avatar.png",
-    "home_page_url": "{{- .Site.BaseURL -}}microblog/",
+    "home_page_url": "https://jade.van-dorsten.net",
     "feed_url": "{{- .Site.BaseURL -}}api/recent.json",
     "authors" : [
         {
