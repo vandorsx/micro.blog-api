@@ -16,7 +16,11 @@
    },
    "outputFormats": {
       "JSON": {
-         "baseName": "feed"
+         "mediaType": "application/json",
+         "path": "/",
+         "baseName": "feed",
+         "isPlainText": true,
+         "notAlternative": true
       },
       "apiALlJSON": {
          "mediaType": "application/json",
@@ -34,7 +38,7 @@
       }
    },
    "outputs": {
-      "home": ["HTML", "MicroblogJSON", "apiAllJSON", "apiRecentJSON"],
+      "home": ["HTML", "JSON", "apiAllJSON", "apiRecentJSON"],
       "page": ["HTML"]
    },
    "taxonomies": {
