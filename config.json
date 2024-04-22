@@ -15,9 +15,8 @@
       }
    },
    "outputFormats": {
-      "MicroblogJSON": {
+      "JSON": {
          "mediaType": "application/json",
-         "path": "microblog",
          "baseName": "feed",
          "isPlainText": true,
          "notAlternative": true
