@@ -1,4 +1,14 @@
 <!doctype html>
 <html lang="en">
-   <meta http-equiv="refresh" content="0;URL='https://jade.van-dorsten.net/microblog'" />
+   <head>
+      {{- if .Params.microblog -}}
+         {{- $year := .Date.Format "2006" -}}
+         {{- $month := .Date.Format "1" -}}
+         {{- $day := .Date.Format "2" -}}
+         {{- $id := .Params.post_id -}}
+         <meta http-equiv="refresh" content="0;URL='https://jade.van-dorsten.net/microblog/{{ $year }}/{{ $month }}/{{ $day }}/{{ $id }}'" />
+      {{- else -}}
+         <meta http-equiv="refresh" content="0;URL='https://jade.van-dorsten.net/microblog'" />
+      {{- end -}}
+   </head>
 </html>
