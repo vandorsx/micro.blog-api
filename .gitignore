@@ -1,4 +1,6 @@
 .DS_Store
+
 /public
+/content
+
 .hugo_build.lock
-content/20*
