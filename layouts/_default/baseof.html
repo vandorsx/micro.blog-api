@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
    <head>
-      {{- if .Params.microblog -}}
+      {{- if eq .Type "post" -}}
          {{- $year := .Date.Format "2006" -}}
          {{- $month := .Date.Format "1" -}}
          {{- $day := .Date.Format "2" -}}
