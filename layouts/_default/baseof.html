@@ -16,8 +16,10 @@
          {{- $month := .Date.Format "1" -}}
          {{- $day := .Date.Format "2" -}}
          {{- $id := .Params.post_id -}}
+         <link rel="canonical" href="https://inthetrees.me/microblog/{{ $year }}/{{ $month }}/{{ $day }}/{{ $id }}" />
          <meta http-equiv="refresh" content="0;URL='https://inthetrees.me/microblog/{{ $year }}/{{ $month }}/{{ $day }}/{{ $id }}'" />
       {{- else -}}
+         <link rel="canonical" href="https://inthetrees.me/microblog" />
          <meta http-equiv="refresh" content="0;URL='https://inthetrees.me/microblog'" />
       {{- end -}}
    </head>
