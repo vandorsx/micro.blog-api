@@ -1,5 +1,15 @@
 <!doctype html>
 <html lang="en">
+   <style>
+      html, body {
+         background-color: #ffffff;
+      }
+      @media (prefers-color-scheme: dark) {
+         html, body {
+            background-color: #1c1917;
+         }
+      }
+   </style>
    <head>
       {{- if eq .Type "post" -}}
          {{- $year := .Date.Format "2006" -}}
