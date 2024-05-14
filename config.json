@@ -22,7 +22,7 @@
          "isPlainText": true,
          "notAlternative": true
       },
-      "apiALlJSON": {
+      "apiAllJSON": {
          "mediaType": "application/json",
          "path": "api",
          "baseName": "all",
@@ -35,11 +35,20 @@
          "baseName": "recent",
          "isPlainText": true,
          "notAlternative": true
-      }
+      },
+      "postJSON": {
+			"name": "postJSON",
+			"mediaType": "application/json",
+			"path": "api",
+			"baseName": "index",
+			"isPlainText": true,
+         "notAlternative": true,
+         "isHTML": false
+		}
    },
    "outputs": {
       "home": ["HTML", "JSON", "apiAllJSON", "apiRecentJSON"],
-      "page": ["HTML"]
+      "page": ["HTML", "postJSON"]
    },
    "taxonomies": {
       "category": "categories"
