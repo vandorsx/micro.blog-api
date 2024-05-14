@@ -1,0 +1,38 @@
+{
+  "ids": [
+    {{- $allPosts := where .Site.Pages "Type" "post" -}}
+    {{- $sortedPosts := sort $allPosts ".Params.date" "desc" -}}
+    {{- $list := slice -}}
+
+    {{- range $sortedPosts -}}
+        {{- $lastMod := .Lastmod.Unix -}}
+        {{- $date := .Date.Unix -}}
+        {{- $showUpdate := in .Params.categories "show_updated" -}}
+
+        {{- if and $showUpdate (gt $lastMod $date) -}}
+            {{- $list = $list | append (dict "post" . "date" $lastMod) -}}
+        {{- else -}}
+            {{- $list = $list | append (dict "post" . "date" $date) -}}
+        {{- end -}}
+    {{- end -}}
+
+    {{- $list = sort $list "date" "desc" -}}
+    {{- $len := len $list -}}
+    {{- range $index, $value := $list -}}
+        {{- $post := .post -}}
+        {{- if not $post.Title -}}
+            {
+                {{- $date := $post.Date.Format "2006-01-02T15:04:05Z0700" -}}
+                {{- $lastmod := $post.Lastmod.Format "2006-01-02T15:04:05Z0700" -}}
+                "url": {{- $post.Permalink | jsonify -}},
+                "id": "{{ $post.Params.post_id }}",
+                {{- if in $post.Params.categories "show_updated" -}}
+                "date_modified": "{{ $lastmod }}",
+                {{- end -}}
+                "date_published": "{{ $date }}"
+            }{{- if ne (add $index 1) $len -}},{{- end -}}
+        {{- end -}}
+    {{- end -}}
+]
+
+}

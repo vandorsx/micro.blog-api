@@ -36,6 +36,13 @@
          "isPlainText": true,
          "notAlternative": true
       },
+      "apiIDs": {
+         "mediaType": "application/json",
+         "path": "api",
+         "baseName": "ids",
+         "isPlainText": true,
+         "notAlternative": true
+      },
       "postJSON": {
 			"name": "postJSON",
 			"mediaType": "application/json",
@@ -47,7 +54,7 @@
 		}
    },
    "outputs": {
-      "home": ["HTML", "JSON", "apiAllJSON", "apiRecentJSON"],
+      "home": ["HTML", "JSON", "apiAllJSON", "apiRecentJSON", "apiIDs"],
       "page": ["HTML", "postJSON"]
    },
    "taxonomies": {
