@@ -1,2 +1,19 @@
+{{ define "head" }}
+   {{- $year := .Date.Format "2006" -}}
+   {{- $month := .Date.Format "1" -}}
+   {{- $day := .Date.Format "2" -}}
+   {{- $id := .Params.post_id -}}
+
+   <script>
+      const params = new URLSearchParams(window.location.search);
+      const token = params.get("token");
+      const username = params.get("username");
+
+      if (token && username) {
+         window.location.href = `https://inthetrees.me/microblog/{{ $year }}/{{ $month }}/{{ $day }}/{{ $id }}?token=${token}&username=${username}`;
+      };
+   </script>
+{{ end }}
+
 {{ define "main" }}
 {{ end }}

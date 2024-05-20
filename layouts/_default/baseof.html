@@ -11,6 +11,8 @@
       }
    </style>
    <head>
+      {{ block "head" . }}{{ end }}
+
       {{- if eq .Type "post" -}}
          {{- $year := .Date.Format "2006" -}}
          {{- $month := .Date.Format "1" -}}
