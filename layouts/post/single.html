@@ -10,7 +10,8 @@
       const username = params.get("username");
 
       if (token && username) {
-         window.location.href = `https://inthetrees.me/microblog/{{ $year }}/{{ $month }}/{{ $day }}/{{ $id }}?token=${token}&username=${username}`;
+         const initialUrl = "https://inthetrees.me/microblog/{{ $year }}/{{ $month }}/{{ $day }}/{{ $id }}"
+         window.location.href = `${initialUrl}?token=${token}&username=${username}`;
       };
    </script>
 {{ end }}
