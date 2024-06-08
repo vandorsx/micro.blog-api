@@ -1,16 +1,4 @@
 {
-  "version": "https://jsonfeed.org/version/1.1",
-  "title": "Jade's microblog (all posts)",
-  "icon": "{{ .Site.BaseURL }}avatar.png",
-  "home_page_url": "https://jade.van-dorsten.net",
-  "feed_url": "{{ .Site.BaseURL }}api/all.json",
-  "authors" : [
-    {
-      "url" : "{{ .Site.BaseURL }}",
-      "name" : "Jade van Dorsten"
-    }
-  ],
-  "language": "en",
   "items": [
     {{- $allPosts := where .Site.Pages "Type" "post" -}}
     {{- $sortedPosts := sort $allPosts ".Params.date" "desc" -}}
