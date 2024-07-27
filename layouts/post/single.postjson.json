@@ -28,7 +28,7 @@
 {{- end -}}
 "url": {{- $.Permalink | jsonify -}},
 "content_html": {{ $s }},
-"title": "Jade's microblog on {{ .Date.Format "Jan 2, 2006" -}}",
+"title": "Microblog on {{ .Date.Format "January 2, 2006 at 15:04" -}}",
 {{- $desc := htmlUnescape $.Content | plainify | jsonify -}}
 {{- $desc := replace $desc "\\n" "" -}}
 "description": {{- $desc -}}
