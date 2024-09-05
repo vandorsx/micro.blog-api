@@ -1,13 +1,13 @@
 {
   "version": "https://jsonfeed.org/version/1.1",
-  "title": "Jade's microblog",
+  "title": "Jade van Dörsten - Microblog",
   "icon": "{{ .Site.BaseURL }}avatar.png",
-  "home_page_url": "https://jade.van-dorsten.net/microblog",
+  "home_page_url": "https://vandor.sx/microblog",
   "feed_url": "{{ .Site.BaseURL }}microblog/feed.json",
   "authors" : [
     {
-      "url" : "https://jade.van-dorsten.net",
-      "name" : "Jade van Dorsten"
+      "url" : "https://vandor.sx",
+      "name" : "Jade van Dörsten"
     }
   ],
   "language": "en",

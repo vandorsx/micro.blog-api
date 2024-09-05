@@ -2,11 +2,11 @@
 <html lang="en">
    <style>
       html, body {
-         background-color: #f5f2ef;
+         background-color: #ffffff;
       }
    </style>
    <head>
-      <meta name="theme-color" content="#f5f2ef" />
+      <meta name="theme-color" content="#ffffff" />
 
       {{ block "head" . }}{{ end }}
 
@@ -15,11 +15,11 @@
          {{- $month := .Date.Format "1" -}}
          {{- $day := .Date.Format "2" -}}
          {{- $id := .Params.post_id -}}
-         <link rel="canonical" href="https://jade.van-dorsten.net/microblog/{{ $year }}/{{ $month }}/{{ $day }}/{{ $id }}" />
-         <meta http-equiv="refresh" content="0;URL='https://jade.van-dorsten.net/microblog/{{ $year }}/{{ $month }}/{{ $day }}/{{ $id }}'" />
+         <link rel="canonical" href="https://vandor.sx/microblog/{{ $year }}/{{ $month }}/{{ $day }}/{{ $id }}" />
+         <meta http-equiv="refresh" content="0;URL='https://vandor.sx/microblog/{{ $year }}/{{ $month }}/{{ $day }}/{{ $id }}'" />
       {{- else -}}
-         <link rel="canonical" href="https://jade.van-dorsten.net/microblog" />
-         <meta http-equiv="refresh" content="0;URL='https://jade.van-dorsten.net/microblog'" />
+         <link rel="canonical" href="https://vandor.sx/microblog" />
+         <meta http-equiv="refresh" content="0;URL='https://vandor.sx/microblog'" />
       {{- end -}}
    </head>
    <body>

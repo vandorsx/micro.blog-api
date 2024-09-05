@@ -10,7 +10,7 @@
       const username = params.get("username");
 
       if (token && username) {
-         const initialUrl = "https://jade.van-dorsten.net/microblog/{{ $year }}/{{ $month }}/{{ $day }}/{{ $id }}"
+         const initialUrl = "https://vandor.sx/microblog/{{ $year }}/{{ $month }}/{{ $day }}/{{ $id }}"
          window.location.href = `${initialUrl}?token=${token}&username=${username}`;
       };
    </script>
