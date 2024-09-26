@@ -7,19 +7,26 @@
   "previous_page": {{ if .Paginator.HasPrev }}{{ if eq .Paginator.Prev.PageNumber 1 }}"/api/archive/list.json"{{ else }}"/api/archive/{{ .Paginator.Prev.PageNumber }}/list.json"{{ end }}{{ else }}null{{ end }},
   "items": [
     {{- $allPosts := where .Site.Pages "Type" "post" -}}
-    {{- $sortedPosts := sort $allPosts ".Params.date" "desc" -}}
+
+    {{- $postsWithID := where $allPosts "Params.post_id" "!=" nil -}}
+    {{- $postsWithID = where $postsWithID "Params.post_id" "!=" "" -}}
+    {{- $validPosts := where $postsWithID "Params.post_id" "ne" nil -}}
+
+    {{- $sortedPosts := sort $validPosts ".Params.date" "desc" -}}
     {{- $paginatedPosts := .Paginate $sortedPosts -}}
     {{- $list := slice -}}
 
     {{- range $paginatedPosts.Pages -}}
-        {{- $lastMod := .Lastmod.Unix -}}
-        {{- $date := .Date.Unix -}}
-        {{- $showUpdate := in .Params.categories "show_updated" -}}
+        {{- if and (isset .Params "post_id") (.Params.post_id) -}}
+            {{- $lastMod := .Lastmod.Unix -}}
+            {{- $date := .Date.Unix -}}
+            {{- $showUpdate := in .Params.categories "show_updated" -}}
 
-        {{- if and $showUpdate (gt $lastMod $date) -}}
-            {{- $list = $list | append (dict "post" . "date" $lastMod) -}}
-        {{- else -}}
-            {{- $list = $list | append (dict "post" . "date" $date) -}}
+            {{- if and $showUpdate (gt $lastMod $date) -}}
+                {{- $list = $list | append (dict "post" . "date" $lastMod) -}}
+            {{- else -}}
+                {{- $list = $list | append (dict "post" . "date" $date) -}}
+            {{- end -}}
         {{- end -}}
     {{- end -}}
 
