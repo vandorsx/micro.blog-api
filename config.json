@@ -29,6 +29,13 @@
          "isPlainText": true,
          "notAlternative": true
       },
+      "apiArchiveJSON": {
+         "mediaType": "application/json",
+         "path": "api",
+         "baseName": "archive",
+         "isPlainText": true,
+         "notAlternative": true
+      },
       "apiRecentJSON": {
          "mediaType": "application/json",
          "path": "api",
@@ -54,7 +61,7 @@
 		}
    },
    "outputs": {
-      "home": ["HTML", "JSON", "apiAllJSON", "apiRecentJSON", "apiIDs"],
+      "home": ["HTML", "JSON", "apiAllJSON", "apiArchiveJSON", "apiRecentJSON", "apiIDs", "postJSON"],
       "page": ["HTML", "postJSON"]
    },
    "taxonomies": {
@@ -71,7 +78,7 @@
    },
    "enableRobotsTXT": true,
    "languageCode": "en",
-   "paginate": 25,
+   "paginate": 27,
    "params": {
       "description": "",
       "paginate_home": false,
