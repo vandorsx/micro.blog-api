@@ -3,8 +3,8 @@
   "pages": {{ .Paginator.TotalPages }},
   "total_items": {{ .Paginator.TotalNumberOfElements }},
   "items_per_page": {{ .Paginator.PageSize }},
-  "next_page": {{ if .Paginator.HasNext }}"/api/posts/page/{{ .Paginator.Next.PageNumber }}.json"{{ else }}null{{ end }},
-  "previous_page": {{ if .Paginator.HasPrev }}"/api/posts/page/{{ .Paginator.Prev.PageNumber }}.json"{{ else }}null{{ end }},
+  "next_page": {{ if .Paginator.HasNext }}"/api/page/{{ .Paginator.Next.PageNumber }}/archive.json"{{ else }}null{{ end }},
+  "previous_page": {{ if .Paginator.HasPrev }}"/api/page/{{ .Paginator.Prev.PageNumber }}/archive.json"{{ else }}null{{ end }},
   "items": [
     {{- $allPosts := where .Site.Pages "Type" "post" -}}
     {{- $sortedPosts := sort $allPosts ".Params.date" "desc" -}}
