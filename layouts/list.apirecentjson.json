@@ -9,7 +9,6 @@
         {{- $list := slice -}}
 
         {{- range $filteredPosts -}}
-        {{- if not .Title -}}
             {{- $lastMod := .Lastmod.Unix -}}
             {{- $date := .Date.Unix -}}
             {{- $showUpdate := in .Params.categories "show_updated" -}}
@@ -20,13 +19,11 @@
                 {{- $list = $list | append (dict "post" . "date" $date) -}}
             {{- end -}}
         {{- end -}}
-        {{- end -}}
 
         {{- $list = sort $list "date" "desc" -}}
         {{- $len := len $list -}}
         {{- range $index, $value := $list -}}
             {{- $post := .post -}}
-            {{- if not $post.Title -}}
                 {
                     {{- $date := $post.Date.Format "2006-01-02T15:04:05Z0700" -}}
                     {{- $lastmod := $post.Lastmod.Format "2006-01-02T15:04:05Z0700" -}}
@@ -56,9 +53,11 @@
                     ],
                     {{- end -}}
                     "url": {{- $post.Permalink | jsonify -}},
+                    {{- if $post.Title -}}
+                        "title": {{- $post.Title | jsonify -}},
+                    {{- end -}}
                     "content_html": {{ $s }}
                 }{{- if ne (add $index 1) $len -}},{{- end -}}
-            {{- end -}}
         {{- end -}}
     ]
 }
