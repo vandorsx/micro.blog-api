@@ -54,7 +54,10 @@
                     {{- end -}}
                     "url": {{- $post.Permalink | jsonify -}},
                     {{- if $post.Title -}}
+                        "titled_post": true,
                         "title": {{- $post.Title | jsonify -}},
+                    {{- else -}}
+                        "titled_post": false,
                     {{- end -}}
                     "content_html": {{ $s }}
                 }{{- if ne (add $index 1) $len -}},{{- end -}}
