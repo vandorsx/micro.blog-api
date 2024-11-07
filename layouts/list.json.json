@@ -32,7 +32,6 @@
     {{- $len := len $list -}}
     {{- range $index, $value := $list -}}
         {{- $post := .post -}}
-        {{- if not $post.Title -}}
             {
                 {{- if $post.Params.guid -}}
                 "id": "{{ $post.Params.guid }}",
@@ -47,6 +46,9 @@
                 {{- $s := replace $s "%3A" ":" -}}
                 {{- $s := replace $s "%2F" "/" -}}
                 {{- $s := replaceRE "<svg.*?</svg>" "" $s -}}
+                {{- if $post.Title -}}
+                    "title": {{- $post.Title | jsonify -}},
+                {{- end -}}
                 "content_html": {{ $s }},
                 {{- $date := $post.Date.Format "2006-01-02T15:04:05-07:00" -}}
                 {{- $lastmod := $post.Lastmod.Format "2006-01-02T15:04:05-07:00" -}}
@@ -57,7 +59,6 @@
                 "url": "{{ $post.Permalink }}"
             }
             {{- if ne (add $index 1) $len -}},{{- end -}}
-        {{- end -}}
     {{- end -}}
 ]
 
