@@ -1,13 +1,21 @@
 <!doctype html>
 <html lang="en">
    <style>
+      :root {
+         color-scheme: light dark;
+      }
+
       html, body {
-         background-color: #ffffff;
+         background-color: light-dark(white, white);
+      }
+
+      @media (min-width: 1024px) {
+         html, body {
+            background-color: light-dark(#F0F0F0, #323232);
+         }
       }
    </style>
    <head>
-      <meta name="theme-color" content="#ffffff" />
-
       {{ block "head" . }}{{ end }}
 
       {{- if eq .Type "post" -}}
