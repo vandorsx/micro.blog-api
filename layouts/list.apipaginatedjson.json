@@ -1,0 +1,76 @@
+{
+  "page": {{ .Paginator.PageNumber }},
+  "pages": {{ .Paginator.TotalPages }},
+  "total_items": {{ .Paginator.TotalNumberOfElements }},
+  "items_per_page": {{ .Paginator.PageSize }},
+  "next_page": {{ if .Paginator.HasNext }}"/api/paginated/{{ .Paginator.Next.PageNumber }}/list.json"{{ else }}null{{ end }},
+  "previous_page": {{ if .Paginator.HasPrev }}{{ if eq .Paginator.Prev.PageNumber 1 }}"/api/paginated/list.json"{{ else }}"/api/paginated/{{ .Paginator.Prev.PageNumber }}/list.json"{{ end }}{{ else }}null{{ end }},
+  "items": [
+    {{- $allPosts := where .Site.Pages "Type" "post" -}}
+
+    {{- $postsWithID := where $allPosts "Params.post_id" "!=" nil -}}
+    {{- $postsWithID = where $postsWithID "Params.post_id" "!=" "" -}}
+    {{- $validPosts := where $postsWithID "Params.post_id" "ne" nil -}}
+
+    {{- $sortedPosts := sort $validPosts ".Params.date" "desc" -}}
+    {{- $paginatedPosts := .Paginate $sortedPosts -}}
+    {{- $list := slice -}}
+
+    {{- range $paginatedPosts.Pages -}}
+        {{- if and (isset .Params "post_id") (.Params.post_id) -}}
+            {{- $lastMod := .Lastmod.Unix -}}
+            {{- $date := .Date.Unix -}}
+            {{- $showUpdate := in .Params.categories "show_updated" -}}
+
+            {{- if and $showUpdate (gt $lastMod $date) -}}
+                {{- $list = $list | append (dict "post" . "date" $lastMod) -}}
+            {{- else -}}
+                {{- $list = $list | append (dict "post" . "date" $date) -}}
+            {{- end -}}
+        {{- end -}}
+    {{- end -}}
+
+    {{- $list = sort $list "date" "desc" -}}
+    {{- $len := len $list -}}
+    {{- range $index, $value := $list -}}
+        {{- $post := .post -}}
+            {
+                {{- $date := $post.Date.Format "2006-01-02T15:04:05Z0700" -}}
+                {{- $lastmod := $post.Lastmod.Format "2006-01-02T15:04:05Z0700" -}}
+                {{- $s := $post.Content | jsonify -}}
+                {{- $s := replace $s "\\u003c" "<" -}}
+                {{- $s := replace $s "\\u003e" ">" -}}
+                {{- $s := replace $s "\\u0026" "&" -}}
+                {{- $s := replaceRE "<svg.*?</svg>" "" $s -}}
+                "id": "{{ $post.Params.post_id }}",
+                "date_published": "{{ $date }}",
+                {{- if in $post.Params.categories "show_updated" -}}
+                "date_modified": "{{ $lastmod }}",
+                {{- end -}}
+                {{- if $post.Params.categories -}}
+                "categories": {{ $post.Params.categories | jsonify }},
+                {{- end -}}
+                {{- if and (isset $post.Params "photos_with_metadata") (ne $post.Params.photos_with_metadata nil) -}}
+                "photos": [
+                    {{- $photoLen := len $post.Params.photos_with_metadata -}}
+                    {{- range $photoIndex, $photo := $post.Params.photos_with_metadata -}}
+                    {
+                    "url": "{{ $photo.url }}",
+                    "width": {{ $photo.width }},
+                    "height": {{ $photo.height }}
+                    }{{- if ne (add $photoIndex 1) $photoLen -}},{{- end -}}
+                    {{- end -}}
+                ],
+                {{- end -}}
+                "url": {{- $post.Permalink | jsonify -}},
+                {{- if $post.Title -}}
+                    "titled_post": true,
+                    "title": {{- $post.Title | jsonify -}},
+                {{- else -}}
+                    "titled_post": false,
+                {{- end -}}
+                "content_html": {{ $s }}
+            }{{- if ne (add $index 1) $len -}},{{- end -}}
+    {{- end -}}
+  ]
+}
