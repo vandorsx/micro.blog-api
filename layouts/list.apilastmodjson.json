@@ -1,0 +1,5 @@
+{
+   {{- $allPosts := where .Site.Pages "Type" "post" -}}
+   {{- $sortedPosts := sort $allPosts ".Params.lastmod" "desc" }}
+   "lastmod": "{{ with index $sortedPosts 0 }}{{ dateFormat "2006-01-02T15:04Z" .Lastmod.UTC }}{{ end }}"
+}

@@ -29,6 +29,13 @@
          "isPlainText": true,
          "notAlternative": true
       },
+      "apiLastmodJSON": {
+         "mediaType": "application/json",
+         "path": "api",
+         "baseName": "lastmod",
+         "isPlainText": true,
+         "notAlternative": true
+      },
       "apiAllJSON": {
          "mediaType": "application/json",
          "path": "api",
@@ -68,7 +75,7 @@
 		}
    },
    "outputs": {
-      "home": ["HTML", "JSON", "SitemapXML", "apiAllJSON", "apiPaginatedJSON", "apiRecentJSON", "apiIDs", "postJSON"],
+      "home": ["HTML", "JSON", "SitemapXML", "apiLastmodJSON", "apiAllJSON", "apiPaginatedJSON", "apiRecentJSON", "apiIDs", "postJSON"],
       "page": ["HTML", "postJSON"]
    },
    "taxonomies": {
