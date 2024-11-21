@@ -2,3 +2,4 @@ user-agent: *
 allow: /$
 disallow: /
 allow: /20*/*/*
+allow: /sitemap.xml
