@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{{- $list := where .Site.Pages "Type" "post" -}}
+{{- $sortedPosts := sort $list ".Params.lastmod" "desc" -}}
+
+{{- range $sortedPosts -}}
+   {{- $year := .Date.Format "2006" -}}
+   {{- $month := .Date.Format "1" -}}
+   {{- $day := .Date.Format "2" -}}
+   {{- $id := .Params.post_id -}}
+   <url>
+      <loc>https://vandor.sx/microblog/{{ $year }}/{{ $month }}/{{ $day }}/{{ $id }}</loc>
+      <lastmod>{{ dateFormat "2006-01-02T15:04Z" .Lastmod.UTC }}</lastmod>
+      {{- if .Title -}}
+      <priority>1.0</priority>
+      {{- else -}}
+      <priority>0.5</priority>
+      {{- end -}}
+   </url>
+{{- end -}}
+</urlset>

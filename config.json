@@ -23,6 +23,12 @@
          "isPlainText": true,
          "notAlternative": true
       },
+      "SitemapXML": {
+         "mediaType": "application/xml",
+         "baseName": "sitemap",
+         "isPlainText": true,
+         "notAlternative": true
+      },
       "apiAllJSON": {
          "mediaType": "application/json",
          "path": "api",
@@ -62,7 +68,7 @@
 		}
    },
    "outputs": {
-      "home": ["HTML", "JSON", "apiAllJSON", "apiPaginatedJSON", "apiRecentJSON", "apiIDs", "postJSON"],
+      "home": ["HTML", "JSON", "SitemapXML", "apiAllJSON", "apiPaginatedJSON", "apiRecentJSON", "apiIDs", "postJSON"],
       "page": ["HTML", "postJSON"]
    },
    "taxonomies": {
