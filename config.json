@@ -30,13 +30,6 @@
          "isPlainText": true,
          "notAlternative": true
       },
-      "apiArchiveJSON": {
-         "mediaType": "application/json",
-         "path": "api/archive",
-         "baseName": "list",
-         "isPlainText": true,
-         "notAlternative": true
-      },
       "apiPaginatedJSON": {
          "mediaType": "application/json",
          "path": "api/paginated",
@@ -69,7 +62,7 @@
 		}
    },
    "outputs": {
-      "home": ["HTML", "JSON", "apiAllJSON", "apiArchiveJSON", "apiPaginatedJSON", "apiRecentJSON", "apiIDs", "postJSON"],
+      "home": ["HTML", "JSON", "apiAllJSON", "apiPaginatedJSON", "apiRecentJSON", "apiIDs", "postJSON"],
       "page": ["HTML", "postJSON"]
    },
    "taxonomies": {
