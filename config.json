@@ -68,7 +68,7 @@
 			"name": "postJSON",
 			"mediaType": "application/json",
 			"path": "api",
-			"baseName": "index",
+			"baseName": "post",
 			"isPlainText": true,
          "notAlternative": true,
          "isHTML": false
