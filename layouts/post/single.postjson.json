@@ -40,7 +40,7 @@
   "description": {{ $desc }}
 {{- else -}}
   {{- $desc := htmlUnescape $.Content | plainify | jsonify -}}
-  {{- $desc := replace $desc "\\n" "" -}}
+  {{- $desc := replace $desc "\\n" " " -}}
   "description": {{ $desc }}
 {{- end -}}
 }
